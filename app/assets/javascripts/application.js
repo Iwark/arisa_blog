@@ -13,3 +13,25 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+function hidePosts() {
+  $('#happyPost').hide();
+  $('#sadPost').hide();
+  $('#angryPost').hide();
+}
+
+$(function(){
+  hidePosts();
+
+  $('#post_post_type').on('change', function(e){
+    hidePosts();
+    if(e.target.value == "sad") {
+      $('#sadPost').show();
+    } else if(e.target.value == "happy") {
+      $('#happyPost').show();
+    } else if(e.target.value == "angry") {
+      $('#angryPost').show();
+    }
+  });
+
+});

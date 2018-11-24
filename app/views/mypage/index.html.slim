@@ -1,0 +1,14 @@
+.container
+  h1 ありさのマイページ
+
+  .btn.btn-default
+    = link_to '前日', root_path(n: @n+1)
+
+  - if @n > 0
+    .btn.btn-default
+      = link_to '翌日', root_path(n: @n-1)
+
+  - if @post.id
+    = render @post
+  - else
+    = render 'posts/new', post: @post

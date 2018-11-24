@@ -1,0 +1,9 @@
+h2 #{post.day.strftime('%Y/%m/%d')}の日記
+
+= image_tag post.weather_image_url, width: 120
+= post.open
+= post.post_type
+
+= render post.happy_post if post.happy_post
+= render post.sad_post if post.sad_post
+= render post.angry_post if post.angry_post

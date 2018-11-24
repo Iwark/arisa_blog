@@ -1,0 +1,28 @@
+h2 #{post.day.strftime('%Y/%m/%d')}の日記を書く
+
+= simple_form_for post do |f|
+  = f.hidden_field :day
+  = f.input :weather, collection: ["晴れ", "曇り", "雨", "雪", "雷", "雹", "日食", "月食"]
+  = f.input :image
+  = f.input :open
+  = f.input :post_type, collection: [["悲しいとき", "sad"], ["嬉しいとき", "happy"], ["怒ってるとき", "angry"]]
+
+  #happyPost
+    = f.fields_for :happy_post do |hp|
+      = hp.input :play
+      = hp.input :can
+      = hp.input :want
+
+  #sadPost
+    = f.fields_for :sad_post do |hp|
+      = hp.input :good
+      = hp.input :wanted
+      = hp.input :whatsup
+
+  #angryPost
+    = f.fields_for :angry_post do |hp|
+      = hp.input :how
+      = hp.input :whom
+      = hp.input :why
+
+  = f.submit '日記を投稿する', class: 'btn btn-primary'
